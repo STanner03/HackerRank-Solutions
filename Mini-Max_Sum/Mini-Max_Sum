@@ -1,0 +1,161 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'miniMaxSum' function below.
+#
+# The function accepts INTEGER_ARRAY arr as parameter.
+#
+
+def miniMaxSum(arr):
+    # Write your code here
+    min_sum = 0;
+    max_sum = 0;
+    lmn = 0
+    hmn = 0
+    for a in arr:
+        n = 0;
+        en = 0;
+        for num in arr:
+            if a > num:
+                n += 1;
+            if a < num:
+                n -= 1;
+            if a == num:
+                en += 1;
+        if n < 4 and en == 1:
+            min_sum += a
+        if n > -4 and en == 1:
+            max_sum += a
+        if n < 3 and en == 2:
+            if lmn == 0:
+                lmn += 1;
+                min_sum += a;
+            elif lmn == 1:
+                lmn = 0;
+                min_sum += a;
+        elif n == 3 and en == 2:
+            if lmn == 0:
+                lmn += 1;
+                min_sum += a;
+            elif lmn == 1:
+                lmn = 0;
+        elif n < 2 and en == 3:
+            if lmn == 0:
+                lmn += 1;
+                min_sum += a;
+            elif lmn == 1:
+                lmn += 1;
+                min_sum += a;
+            elif lmn == 2:
+                lmn = 0;
+                min_sum += a;
+        elif n == 2 and en == 3:
+            if lmn == 0:
+                lmn += 1;
+                min_sum += a;
+            elif lmn == 1:
+                lmn += 1;
+                min_sum += a;
+            elif lmn == 2:
+                lmn = 0;
+        elif n < 1 and en == 4:
+            if lmn == 0:
+                lmn += 1;
+                min_sum += a;
+            elif lmn == 1:
+                lmn += 1;
+                min_sum += a;
+            elif lmn == 2:
+                lmn += 1;
+                min_sum += a;
+            elif lmn == 3:
+                lmn = 0;
+                min_sum += a;
+        elif n == 1 and en == 4:
+            if lmn == 0:
+                lmn += 1;
+                min_sum += a;
+            elif lmn == 1:
+                lmn += 1;
+                min_sum += a;
+            elif lmn == 2:
+                lmn += 1;
+                min_sum += a;
+            elif lmn == 3:
+                lmn = 0;
+        if n > -3 and en == 2:
+            if hmn == 0:
+                hmn += 1
+                max_sum += a;
+            elif hmn == 1:
+                hmn = 0
+                max_sum += a;
+        elif n == -3 and en == 2:
+            if hmn == 0:
+                hmn += 1;
+                max_sum += a;
+            elif hmn == 1:
+                hmn = 0;
+        elif n > -2 and en == 3:
+            if hmn == 0:
+                hmn += 1
+                max_sum += a;
+            if hmn == 1:
+                hmn += 1
+                max_sum += a;
+            elif hmn == 2:
+                hmn = 0
+                max_sum += a;
+        elif n == -2 and en == 3:
+            if hmn == 0:
+                hmn += 1
+                max_sum += a;
+            if hmn == 1:
+                hmn += 1
+                max_sum += a;
+            elif hmn == 2:
+                hmn = 0
+        elif n > -1 and en == 4:
+            if hmn == 0:
+                hmn += 1
+                max_sum += a;
+            elif hmn == 1:
+                hmn += 1
+                max_sum += a;
+            elif hmn == 2:
+                hmn += 1
+                max_sum += a;
+            elif hmn == 3:
+                hmn = 0
+                max_sum += a;
+        elif n == -1 and en == 4:
+            if hmn == 0:
+                hmn += 1
+                max_sum += a;
+            elif hmn == 1:
+                hmn += 1
+                max_sum += a;
+            elif hmn == 2:
+                hmn += 1
+                max_sum += a;
+            elif hmn == 3:
+                hmn = 0
+        elif n == 0 and en == 5:
+            min_sum = a * (len(arr) - 1)
+            max_sum = a * (len(arr) - 1)
+    
+    print(f'{min_sum} {max_sum}')
+        
+            
+
+if __name__ == '__main__':
+
+    arr = list(map(int, input().rstrip().split()))
+
+    miniMaxSum(arr)
