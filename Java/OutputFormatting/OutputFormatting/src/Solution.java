@@ -24,7 +24,7 @@ public class Solution {
                 System.out.println(s1);
             }
             System.out.println("================================");
-
+            sc.close();
     }
 }
 
