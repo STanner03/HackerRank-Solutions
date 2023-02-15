@@ -1,5 +1,5 @@
 import java.util.*;
-import java.io.*;
+// import java.io.*;
 
 
 
@@ -31,6 +31,7 @@ class Solution{
             }
 
         }
+        sc.close();
     }
 }
 
